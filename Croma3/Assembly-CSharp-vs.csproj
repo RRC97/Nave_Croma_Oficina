@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BackgroundColor.cs" />
      <Compile Include="Assets\Scripts\BarScript.cs" />
+     <Compile Include="Assets\Scripts\CubeMenuScript.cs" />
      <Compile Include="Assets\Scripts\CubeScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\InputButton.cs" />
