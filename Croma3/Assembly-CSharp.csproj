@@ -53,7 +53,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\InputButton.cs" />
      <Compile Include="Assets\Scripts\InputManager.cs" />
-     <Compile Include="Assets\Scripts\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\MenuButton.cs" />
      <None Include="Assets\Resources\Shader\Cube.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>

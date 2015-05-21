@@ -14,9 +14,11 @@ public class CubeScript : MonoBehaviour
 		int rSY = Random.Range (1, 4);
 		int rSZ = Random.Range (1, 4);
 
+		rSX = Random.Range(0, 2) == 0 ? -rSX : rSX;
+		rSY = Random.Range(0, 2) == 0 ? -rSY : rSY;
+		rSZ = Random.Range(0, 2) == 0 ? -rSZ : rSZ;
+
 		rotateSpeed = new Vector3 (rSX, rSY, rSZ);
-
-
 	}
 
 	public void SetColor(int color)
