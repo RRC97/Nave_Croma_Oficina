@@ -53,9 +53,9 @@ public class CubeScript : MonoBehaviour
 		renderer.material.mainTexture = (Texture)Resources.Load ("Texture/" + textureName);
 		rigidbody.AddForce (Random.Range (-30f, 30f), 0, 0);
 	}
-	
+
 	// Update is called once per frame
-	void Update ()
+	protected void Update ()
 	{
 		if (transform.position.y <= -10)
 			Destroy (gameObject);

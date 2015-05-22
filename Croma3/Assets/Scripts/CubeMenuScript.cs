@@ -49,7 +49,7 @@ public class CubeMenuScript : MonoBehaviour
 				float x = touchLastPos.x - touchPos.x;
 				float y = touchLastPos.y - touchPos.y;
 				
-				rotate += new Vector3(x, y);
+				rotate += new Vector3(y, x);
 
 				if(rotate.x > 30)rotate.x = 30;
 				if(rotate.x < -30)rotate.x = -30;
@@ -64,5 +64,10 @@ public class CubeMenuScript : MonoBehaviour
 			rotate = Vector3.Lerp(rotate, Vector3.zero, 0.01f);
 		}
 		transform.Rotate(rotate);
+
+		if(Input.GetKeyDown(KeyCode.Escape))
+		{
+			Application.Quit();
+		}
 	}
 }

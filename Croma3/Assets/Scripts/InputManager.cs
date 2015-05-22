@@ -7,7 +7,6 @@ public class InputManager : MonoBehaviour
 	BarScript bar;
 	Sprite sprite;
 	string spriteResult;
-	int countPoints;
 	// Use this for initialization
 	void Awake ()
 	{
@@ -63,16 +62,5 @@ public class InputManager : MonoBehaviour
 		}
 
 		bar.ResetSprite (spriteResult);
-		countPoints = bar.GetValueHit() * 10;
-	}
-	
-	public void OnGUI ()
-	{
-		GUIStyle label = GUI.skin.label;
-		label.font = (Font)Resources.Load("Font/Neou");
-		label.fontSize = Screen.height/20;
-		label.alignment = TextAnchor.UpperRight;
-
-		GUI.Label(new Rect(-5, 0, Screen.width, 100), ""+countPoints, label);
 	}
 }
