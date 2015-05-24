@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BackgroundColor.cs" />
      <Compile Include="Assets\Scripts\BarScript.cs" />
+     <Compile Include="Assets\Scripts\BreakStreak.cs" />
      <Compile Include="Assets\Scripts\CubeMenuScript.cs" />
      <Compile Include="Assets\Scripts\CubeScript.cs" />
      <Compile Include="Assets\Scripts\CubeSettings.cs" />
@@ -57,6 +58,7 @@
      <Compile Include="Assets\Scripts\InputManager.cs" />
      <Compile Include="Assets\Scripts\MenuButton.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />
+     <Compile Include="Assets\Scripts\PowerUpEvent.cs" />
      <Compile Include="Assets\Scripts\SettingsManager.cs" />
      <None Include="Assets\Resources\Shader\Cube.shader" />
  <Reference Include="UnityEngine.UI">

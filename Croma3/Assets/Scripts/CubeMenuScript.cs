@@ -5,14 +5,20 @@ public class CubeMenuScript : MonoBehaviour
 {
 	int touchId = -1;
 	Vector3 touchPos, touchLastPos, rotate;
+
+	[SerializeField]
+	private SpriteRenderer title;
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+		title.color = BackgroundColor.colorText;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		title.color = BackgroundColor.colorText;
+
 		if(touchId < 0 && Input.touchCount > 0)
 		{
 			foreach(Touch touch in Input.touches)

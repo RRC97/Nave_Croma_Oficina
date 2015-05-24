@@ -4,6 +4,8 @@ using System;
 
 public class BackgroundColor : MonoBehaviour
 {
+	public static Color colorText;
+
 	Color result;
 	Color clear;
 	Color dark;
@@ -22,14 +24,22 @@ public class BackgroundColor : MonoBehaviour
 		if(style == 0)
 			SetColor ();
 		else if(style == 1)
+		{
 			camera.backgroundColor = clear;
+			BackgroundColor.colorText = dark;
+		}
 		else if(style == 2)
+		{
 			camera.backgroundColor = dark;
+			BackgroundColor.colorText = clear;
+		}
 		else
 		{
 			style = 0;
 			SetColor();
 		}
+		
+		Time.timeScale = 1;
 	}
 
 	void SetColor()
@@ -44,6 +54,15 @@ public class BackgroundColor : MonoBehaviour
 		{
 			float intensivite = (float)timeInMinute/timeBase;
 			result = Color.Lerp(dark, clear, intensivite);
+		}
+
+		if(timeInMinute > timeBase/2 && timeInMinute <= timeBase + timeBase/2)
+		{
+			BackgroundColor.colorText = dark;
+		}
+		else
+		{
+			BackgroundColor.colorText = clear;
 		}
 		
 		camera.backgroundColor = result;

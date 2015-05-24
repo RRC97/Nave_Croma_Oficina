@@ -36,6 +36,7 @@ public class InputManager : MonoBehaviour
 			activeCount++;
 		}
 
+
 		switch(activeResult)
 		{
 			case 0:
@@ -61,6 +62,9 @@ public class InputManager : MonoBehaviour
 				break;
 		}
 
-		bar.ResetSprite (spriteResult);
+		if(activeResult >= 0)
+		{
+			bar.ResetSprite (spriteResult);
+		}
 	}
 }

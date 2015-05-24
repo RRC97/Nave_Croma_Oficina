@@ -6,7 +6,9 @@ public class CubeScript : MonoBehaviour
 	Vector3 rotateSpeed;
 
 	[SerializeField]
-	float downSpeed;
+	float downSpeed = 5;
+
+	protected int colorId;
 	// Use this for initialization
 	void Awake ()
 	{
@@ -21,11 +23,15 @@ public class CubeScript : MonoBehaviour
 		rotateSpeed = new Vector3 (rSX, rSY, rSZ);
 	}
 
-	public void SetColor(int color)
+	protected void ChangeColor(int newColor)
 	{
 		int colorChange = -1;
-		if(color == 4)colorChange = Random.Range(3, 6);
-		else colorChange = color - 1;
+
+		if(newColor > 5)
+			colorChange = 0;
+		else
+			colorChange = newColor;
+
 		string textureName = "white";
 		
 		switch(colorChange)
@@ -50,8 +56,49 @@ public class CubeScript : MonoBehaviour
 			break;
 		}
 		
+		colorId = colorChange;
+		renderer.material.mainTexture = (Texture)Resources.Load ("Texture/" + textureName);
+	}
+
+	public void SetColor(int color)
+	{
+		int colorChange = -1;
+		if(color >= 4)colorChange = Random.Range(3, 6);
+		else colorChange = color - 1;
+		string textureName = "white";
+		
+		switch(colorChange)
+		{
+		case 0:
+			textureName = "yellow";
+			break;
+		case 1:
+			textureName = "red";
+			break;
+		case 2:
+			textureName = "blue";
+			break;
+		case 3:
+			textureName = "orange";
+			break;
+		case 4:
+			textureName = "green";
+			break;
+		case 5:
+			textureName = "magenta";
+			break;
+		}
+
+		colorId = colorChange;
 		renderer.material.mainTexture = (Texture)Resources.Load ("Texture/" + textureName);
 		rigidbody.AddForce (Random.Range (-30f, 30f), 0, 0);
+	}
+
+	protected void ChangeAlpha(float alpha)
+	{
+		Color color = renderer.material.color;
+		color.a = alpha;
+		renderer.material.color = color;
 	}
 
 	// Update is called once per frame

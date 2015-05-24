@@ -30,11 +30,12 @@ public class BarScript : MonoBehaviour
 		defaultScaleBarEffect = transform.localScale;
 		defaultScaleBarEffect.x = 0;
 		scaleEffect = 1;
+		spriteRenderer.color = barEffect.color = GetColor(spriteName);
 	}
 
 	public void ResetSprite(string newSpriteName)
 	{
-		if(!spriteName.Equals(newSpriteName))
+		if(!spriteName.Equals(newSpriteName) && !effect)
 		{
 			spriteRenderer.color = GetColor(spriteName);
 			spriteName = newSpriteName;
@@ -44,7 +45,7 @@ public class BarScript : MonoBehaviour
 
 	Color GetColor(string name)
 	{
-		Color colorResult = Color.white;
+		Color colorResult = BackgroundColor.colorText;
 
 		switch(name)
 		{
@@ -99,6 +100,13 @@ public class BarScript : MonoBehaviour
 	{
 		if(c.gameObject.renderer.material.mainTexture.name.Equals(spriteName))
 		{
+			PowerUp powerUp = c.GetComponent<PowerUp>();
+			BreakStreak breakStreak = c.GetComponent<BreakStreak>();
+			
+			if(powerUp != null)
+				powerUp.OnAction();
+			if(breakStreak != null)
+				valueHit ++;
 			valueHit ++;
 			Destroy(c.gameObject);
 		}
@@ -107,6 +115,13 @@ public class BarScript : MonoBehaviour
 	{
 		if(c.gameObject.renderer.material.mainTexture.name.Equals(spriteName))
 		{
+			PowerUp powerUp = c.GetComponent<PowerUp>();
+			BreakStreak breakStreak = c.GetComponent<BreakStreak>();
+			
+			if(powerUp != null)
+				powerUp.OnAction();
+			if(breakStreak != null)
+				valueHit ++;
 			valueHit ++;
 			Destroy(c.gameObject);
 		}
@@ -114,7 +129,10 @@ public class BarScript : MonoBehaviour
 
 	void OnTriggerExit(Collider c)
 	{
-		valueHit = -1;
+		PowerUp powerUp = c.GetComponent<PowerUp>();
+
+		if(powerUp == null)
+			valueHit = -1;
 	}
 
 	public int GetValueHit()
