@@ -10,6 +10,7 @@ public class MenuButton : MonoBehaviour
 	void Awake()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		spriteRenderer.color = BackgroundColor.colorText;
 	}
 
 	// Update is called once per frame
@@ -18,6 +19,6 @@ public class MenuButton : MonoBehaviour
 		if(nameScene != "")
 			Application.LoadLevel(nameScene);
 
-		spriteRenderer.color = Color.black;
+		spriteRenderer.color = BackgroundColor.invertColorText;
 	}
 }

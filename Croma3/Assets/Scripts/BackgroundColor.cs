@@ -5,7 +5,7 @@ using System;
 public class BackgroundColor : MonoBehaviour
 {
 	public static Color colorText;
-
+	public static Color invertColorText;
 	Color result;
 	Color clear;
 	Color dark;
@@ -27,11 +27,13 @@ public class BackgroundColor : MonoBehaviour
 		{
 			camera.backgroundColor = clear;
 			BackgroundColor.colorText = dark;
+			BackgroundColor.invertColorText = clear;
 		}
 		else if(style == 2)
 		{
 			camera.backgroundColor = dark;
 			BackgroundColor.colorText = clear;
+			BackgroundColor.invertColorText = dark;
 		}
 		else
 		{
@@ -59,10 +61,12 @@ public class BackgroundColor : MonoBehaviour
 		if(timeInMinute > timeBase/2 && timeInMinute <= timeBase + timeBase/2)
 		{
 			BackgroundColor.colorText = dark;
+			BackgroundColor.invertColorText = clear;
 		}
 		else
 		{
 			BackgroundColor.colorText = clear;
+			BackgroundColor.invertColorText = dark;
 		}
 		
 		camera.backgroundColor = result;

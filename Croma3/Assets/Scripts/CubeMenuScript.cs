@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CubeMenuScript : MonoBehaviour
@@ -7,17 +8,17 @@ public class CubeMenuScript : MonoBehaviour
 	Vector3 touchPos, touchLastPos, rotate;
 
 	[SerializeField]
-	private SpriteRenderer title;
+	private Text title, complementTittle;
 	// Use this for initialization
 	void Start ()
 	{
-		title.color = BackgroundColor.colorText;
+		title.color = complementTittle.color = BackgroundColor.colorText;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		title.color = BackgroundColor.colorText;
+		title.color = complementTittle.color = BackgroundColor.colorText;
 
 		if(touchId < 0 && Input.touchCount > 0)
 		{

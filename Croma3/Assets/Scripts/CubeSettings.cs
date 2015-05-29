@@ -54,6 +54,14 @@ public class CubeSettings : MonoBehaviour
 			if(touch.phase == TouchPhase.Canceled
 			   || touch.phase == TouchPhase.Ended)
 			{
+				if(rotate)
+				{
+					side = 1;
+					touchId = -1;
+					touchLastPos = touchPos = Vector3.zero;
+					Value++;
+					rotate = true;
+				}
 				touchId = -1;
 				touchLastPos = touchPos = Vector3.zero;
 			}
@@ -63,7 +71,7 @@ public class CubeSettings : MonoBehaviour
 				
 				float x = touchPos.x - touchLastPos.x;
 
-				if(x > 10)
+				if(x > 0)
 				{
 					side = 1;
 					touchId = -1;
@@ -72,7 +80,7 @@ public class CubeSettings : MonoBehaviour
 					rotate = true;
 				}
 
-				if(x < -10)
+				if(x < -0)
 				{
 					side = -1;
 					touchId = -1;
