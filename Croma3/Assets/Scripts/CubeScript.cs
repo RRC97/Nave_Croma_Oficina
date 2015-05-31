@@ -22,6 +22,11 @@ public class CubeScript : MonoBehaviour
 
 		rotateSpeed = new Vector3 (rSX, rSY, rSZ);
 	}
+	void Start()
+	{
+		audio.clip = (AudioClip)Resources.Load("Sound/" + renderer.material.mainTexture.name);
+		audio.Play();
+	}
 
 	protected void ChangeColor(int newColor)
 	{

@@ -29,7 +29,8 @@ public class BarScript : MonoBehaviour
 
 		defaultScaleBarEffect = transform.localScale;
 		defaultScaleBarEffect.x = 0;
-		scaleEffect = 1;
+		scaleEffect = 0;
+		effect = false;
 		spriteRenderer.color = barEffect.color = GetColor(spriteName);
 	}
 
@@ -88,6 +89,7 @@ public class BarScript : MonoBehaviour
 			}
 			else
 			{
+				spriteRenderer.sprite = barEffect.sprite;
 				spriteRenderer.color = barEffect.color;
 				scaleEffect = 1;
 			}

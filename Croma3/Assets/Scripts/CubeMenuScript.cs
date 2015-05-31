@@ -8,17 +8,17 @@ public class CubeMenuScript : MonoBehaviour
 	Vector3 touchPos, touchLastPos, rotate;
 
 	[SerializeField]
-	private Text title, complementTittle;
+	private SpriteRenderer title;
 	// Use this for initialization
 	void Start ()
 	{
-		title.color = complementTittle.color = BackgroundColor.colorText;
+		title.color = BackgroundColor.colorText;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		title.color = complementTittle.color = BackgroundColor.colorText;
+		title.color = BackgroundColor.colorText;
 
 		if(touchId < 0 && Input.touchCount > 0)
 		{
@@ -64,6 +64,11 @@ public class CubeMenuScript : MonoBehaviour
 				if(rotate.y < -30)rotate.y = -30;
 
 				touchLastPos = touchPos;
+			}
+			else
+			{
+				if(touch.deltaTime > 1)
+					rotate = Vector3.zero;
 			}
 		}
 		else
