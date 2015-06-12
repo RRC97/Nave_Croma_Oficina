@@ -8,6 +8,8 @@ public class PowerUp : CubeScript
 
 	void Start()
 	{
+		base.Start();
+
 		type = Random.Range(0, 3);
 		renderer.material.SetFloat("_Blend", 1);
 

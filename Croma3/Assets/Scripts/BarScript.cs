@@ -5,7 +5,7 @@ public class BarScript : MonoBehaviour
 {
 	string spriteName;
 	int valueHit;
-	Color yellow, red, green, blue, magenta, orange;
+
 	Vector3 defaultScaleBarEffect;
 	float scaleEffect;
 
@@ -18,12 +18,6 @@ public class BarScript : MonoBehaviour
 	public void Awake()
 	{
 		spriteName = "white";
-		yellow = new Color(255 / 255f, 211 / 255f, 14 / 255f);
-		red = new Color(225 / 255f, 11 / 255f, 19 / 255f);
-		green = new Color(86 / 255f, 160 / 255f, 49 / 255f);
-		blue = new Color(44 / 255f, 83 / 255f, 160 / 255f);
-		magenta = new Color(115 / 255f, 112 / 255f, 179 / 255f);
-		orange = new Color(239 / 255f, 123 / 255f, 72 / 255f);
 
 		spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -51,22 +45,22 @@ public class BarScript : MonoBehaviour
 		switch(name)
 		{
 		case "yellow":
-			colorResult = yellow;
+			colorResult = GameColors.YELLOW;
 			break;
 		case "red":
-			colorResult = red;
+			colorResult = GameColors.RED;
 			break;
 		case "blue":
-			colorResult = blue;
+			colorResult = GameColors.BLUE;
 			break;
 		case "orange":
-			colorResult = orange;
+			colorResult = GameColors.ORANGE;
 			break;
 		case "green":
-			colorResult = green;
+			colorResult = GameColors.GREEN;
 			break;
 		case "magenta":
-			colorResult = magenta;
+			colorResult = GameColors.MAGENTA;
 			break;
 		}
 
@@ -102,31 +96,34 @@ public class BarScript : MonoBehaviour
 	{
 		if(c.gameObject.renderer.material.mainTexture.name.Equals(spriteName))
 		{
-			PowerUp powerUp = c.GetComponent<PowerUp>();
-			BreakStreak breakStreak = c.GetComponent<BreakStreak>();
-			
-			if(powerUp != null)
-				powerUp.OnAction();
-			if(breakStreak != null)
-				valueHit ++;
-			valueHit ++;
-			Destroy(c.gameObject);
+			Collided(c);
 		}
 	}
+
+
+
 	void OnTriggerStay(Collider c)
 	{
 		if(c.gameObject.renderer.material.mainTexture.name.Equals(spriteName))
 		{
-			PowerUp powerUp = c.GetComponent<PowerUp>();
-			BreakStreak breakStreak = c.GetComponent<BreakStreak>();
-			
-			if(powerUp != null)
-				powerUp.OnAction();
-			if(breakStreak != null)
-				valueHit ++;
-			valueHit ++;
-			Destroy(c.gameObject);
+			Collided(c);
 		}
+	}
+
+	void Collided (Collider c)
+	{
+		PowerUp powerUp = c.GetComponent<PowerUp>();
+		BreakStreak breakStreak = c.GetComponent<BreakStreak>();
+		CubeScript cubeScript = c.GetComponent<CubeScript>();
+		
+		if(powerUp != null)
+			powerUp.OnAction();
+		if(breakStreak != null)
+			valueHit ++;
+		valueHit ++;
+		
+		cubeScript.OnDestroySound ();
+		Destroy(c.gameObject);
 	}
 
 	void OnTriggerExit(Collider c)

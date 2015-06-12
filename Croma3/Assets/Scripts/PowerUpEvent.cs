@@ -29,16 +29,19 @@ public class PowerUpEvent : MonoBehaviour
 			foreach(CubeScript cube in normalCubes)
 			{
 				Destroy(cube.gameObject);
+				cube.OnDestroySound();
 				score++;
 			}
 			foreach(BreakStreak cube in breakCubes)
 			{
 				Destroy(cube.gameObject);
+				cube.OnDestroySound();
 				score++;
 			}
 			foreach(PowerUp cube in powerCubes)
 			{
 				Destroy(cube.gameObject);
+				cube.OnDestroySound();
 				score++;
 			}
 			

@@ -22,9 +22,17 @@ public class CubeScript : MonoBehaviour
 
 		rotateSpeed = new Vector3 (rSX, rSY, rSZ);
 	}
-	void Start()
+	protected void Start()
 	{
-		audio.clip = (AudioClip)Resources.Load("Sound/" + renderer.material.mainTexture.name);
+		audio.clip = (AudioClip)Resources.Load("Sound/" + renderer.material.mainTexture.name + "_fall");
+
+		int index = PlayerPrefs.GetInt("SettingSound", 0);
+		float volume = 1 - 0.35f * index;
+		
+		if(volume < 0)
+			volume = 0;
+		
+		audio.volume = volume;
 		audio.Play();
 	}
 
@@ -96,7 +104,10 @@ public class CubeScript : MonoBehaviour
 
 		colorId = colorChange;
 		renderer.material.mainTexture = (Texture)Resources.Load ("Texture/" + textureName);
-		rigidbody.AddForce (Random.Range (-30f, 30f), 0, 0);
+		Vector3 position = transform.position;
+		position.x = Random.Range(-2f, 2f);
+		rigidbody.AddForce (Random.Range (-10f * (2 + position.x), 10f * (2 - position.x)), 0, 0);
+		transform.position = position;
 	}
 
 	protected void ChangeAlpha(float alpha)
@@ -110,7 +121,9 @@ public class CubeScript : MonoBehaviour
 	protected void Update ()
 	{
 		if (transform.position.y <= -10)
+		{
 			Destroy (gameObject);
+		}
 	}
 
 	void FixedUpdate ()
@@ -120,5 +133,26 @@ public class CubeScript : MonoBehaviour
 		Vector3 velocity = rigidbody.velocity;
 		velocity.y = -downSpeed;
 		rigidbody.velocity = velocity;
+	}
+
+	public void OnDestroySound ()
+	{
+		string colorName = renderer.material.mainTexture.name;
+		GameObject soundDestroy = (GameObject)Instantiate(Resources.Load("Prefab/CubeEffect"));
+		soundDestroy.name = colorName + "_SOUND_DESTROY";
+		soundDestroy.transform.position = transform.position;
+		soundDestroy.particleSystem.renderer.material = renderer.material;
+		AudioSource audioDestroy = soundDestroy.AddComponent<AudioSource>();
+
+		audioDestroy.clip = (AudioClip)Resources.Load("Sound/" + renderer.material.mainTexture.name + "_destroy");
+		
+		int index = PlayerPrefs.GetInt("SettingSound", 0);
+		float volume = 1 - 0.35f * index;
+		
+		if(volume < 0)
+			volume = 0;
+		
+		audioDestroy.volume = volume;
+		audioDestroy.Play();
 	}
 }

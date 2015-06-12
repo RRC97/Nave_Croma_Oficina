@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
 
 		if(pauseButton.IsClicked() && !pause)
 		{
+
 			pause = true;
 			timeScale = Time.timeScale;
 			Time.timeScale = 0;
@@ -212,7 +213,10 @@ public class GameManager : MonoBehaviour
 			else
 			{
 				if(lifeIcons[i].sprite != textureOFF)
+				{
 					lifeIcons[i].sprite = textureOFF;
+					lifeIcons[i].color = BackgroundColor.colorText;
+				}
 			}
 		}
 

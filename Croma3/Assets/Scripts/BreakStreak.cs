@@ -5,12 +5,15 @@ public class BreakStreak : CubeScript
 {
 	private int type, side;
 	private float timeEffect, alpha;
-
 	// Use this for initialization
 	void Start ()
 	{
-		type = Random.Range(0, 2);
+		base.Start();
+		type = 1;//Random.Range(0, 2);
 		alpha = 1;
+		if(type == 1)
+		{
+		}
 	}
 	
 	// Update is called once per frame

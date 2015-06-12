@@ -6,19 +6,14 @@ public class CubeMenuScript : MonoBehaviour
 {
 	int touchId = -1;
 	Vector3 touchPos, touchLastPos, rotate;
-
-	[SerializeField]
-	private SpriteRenderer title;
 	// Use this for initialization
 	void Start ()
 	{
-		title.color = BackgroundColor.colorText;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		title.color = BackgroundColor.colorText;
 
 		if(touchId < 0 && Input.touchCount > 0)
 		{
@@ -34,6 +29,7 @@ public class CubeMenuScript : MonoBehaviour
 					{
 						touchId = touch.fingerId;
 						touchLastPos = touchPos = touch.deltaPosition;
+						rotate = Vector3.zero;
 					}
 				}
 			}
@@ -81,5 +77,17 @@ public class CubeMenuScript : MonoBehaviour
 		{
 			Application.Quit();
 		}
+	}
+
+	public void Explosion ()
+	{
+		Transform cube = transform.GetChild(0);
+		for(int i = 0; i < cube.childCount; i++)
+		{
+			Transform box = cube.GetChild(i);
+			box.gameObject.AddComponent<Rigidbody>();
+			box.rigidbody.AddExplosionForce(Random.Range(0, 5000), cube.position, 1000);
+		}
+		enabled = false;
 	}
 }
