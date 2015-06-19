@@ -124,25 +124,15 @@ public class GameManager : MonoBehaviour
 		{
 			if(life > 0)
 			{
-				if(!pause)
-				{
-					pause = true;
-					timeScale = Time.timeScale;
-					Time.timeScale = 0;
-				}
-				else
-				{
-					pause = false;
-					Time.timeScale = timeScale;
-				}
+                Pause();
 			}
 			else
 			{
-				Application.LoadLevel("Menu");
+				Application.LoadLevel("Game");
 			}
 		}
 
-		if(pauseButton.IsClicked() && !pause)
+		if(pauseButton.IsClicked())
 		{
 
 			pause = true;
@@ -152,6 +142,21 @@ public class GameManager : MonoBehaviour
 
 		input.enabled = life > 0 ? !pause : false;
 	}
+
+    public void Pause()
+    {
+        if (!pause)
+        {
+            pause = true;
+            timeScale = Time.timeScale;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            pause = false;
+            Time.timeScale = timeScale;
+        }
+    }
 
 	void PointManager()
 	{
@@ -207,16 +212,13 @@ public class GameManager : MonoBehaviour
 		{
 			if(i < life)
 			{
-				if(lifeIcons[i].sprite != textureON)
-					lifeIcons[i].sprite = textureON;
+                lifeIcons[i].sprite = textureON;
+                lifeIcons[i].color = BackgroundColor.colorText;
 			}
 			else
 			{
-				if(lifeIcons[i].sprite != textureOFF)
-				{
-					lifeIcons[i].sprite = textureOFF;
-					lifeIcons[i].color = BackgroundColor.colorText;
-				}
+				lifeIcons[i].sprite = textureOFF;
+                lifeIcons[i].color = Color.white;
 			}
 		}
 

@@ -33,8 +33,8 @@ public class SpectrumScript : MonoBehaviour
 
 		for(int i = 0; i < 128; i++)
 		{
-			float x = -4f + ((i/129f) * 8f);
-			float y = 5 + output[i] * 5;
+			float y = 5f - ((i/129f) * 7.5f);
+			float x = 3f + output[i] * 5f;
 			line.SetPosition(i, new Vector3(x, y, 10));
 		}
 	}

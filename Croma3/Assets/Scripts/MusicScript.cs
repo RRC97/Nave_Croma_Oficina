@@ -3,6 +3,9 @@ using System.Collections;
 
 public class MusicScript : MonoBehaviour
 {
+    [SerializeField]
+    GameObject pause;
+
 	private float volume;
 	// Use this for initialization
 	void Start ()
@@ -19,6 +22,9 @@ public class MusicScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	
+        if (pause.active)
+            audio.Pause();
+        else if(!audio.isPlaying)
+            audio.Play();
 	}
 }
