@@ -8,10 +8,18 @@ public class CubeScript : MonoBehaviour
 	[SerializeField]
 	float downSpeed = 5;
 
+	AudioSource audio;
+	Renderer renderer;
+	Rigidbody rigidbody;
+
 	protected int colorId;
 	// Use this for initialization
 	void Awake ()
 	{
+		audio = GetComponent<AudioSource> ();
+		renderer = GetComponent<Renderer> ();
+		rigidbody = GetComponent<Rigidbody> ();
+
 		int rSX = Random.Range (1, 4);
 		int rSY = Random.Range (1, 4);
 		int rSZ = Random.Range (1, 4);
@@ -141,7 +149,7 @@ public class CubeScript : MonoBehaviour
 		GameObject soundDestroy = (GameObject)Instantiate(Resources.Load("Prefab/CubeEffect"));
 		soundDestroy.name = colorName + "_SOUND_DESTROY";
 		soundDestroy.transform.position = transform.position;
-		soundDestroy.particleSystem.renderer.material = renderer.material;
+		soundDestroy.GetComponent<ParticleSystem> ().GetComponent<Renderer> ().material = renderer.material;
 		AudioSource audioDestroy = soundDestroy.AddComponent<AudioSource>();
 
 		audioDestroy.clip = (AudioClip)Resources.Load("Sound/" + renderer.material.mainTexture.name + "_destroy");

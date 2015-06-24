@@ -3,10 +3,17 @@ using System.Collections;
 
 public class MusicScript : MonoBehaviour
 {
+	AudioSource audio;
+
     [SerializeField]
     GameObject pause;
 
 	private float volume;
+
+	void Awake ()
+	{
+		audio = GetComponent<AudioSource> ();
+	}
 	// Use this for initialization
 	void Start ()
 	{

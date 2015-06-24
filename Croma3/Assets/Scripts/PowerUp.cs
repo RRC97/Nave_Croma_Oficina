@@ -5,6 +5,12 @@ public class PowerUp : CubeScript
 {
 	private int type;
 	private Texture aux;
+	Renderer renderer;
+
+	void Awake ()
+	{
+		renderer = GetComponent<Renderer> ();
+	}
 
 	void Start()
 	{

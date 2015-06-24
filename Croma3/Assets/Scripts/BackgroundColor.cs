@@ -12,12 +12,15 @@ public class BackgroundColor : MonoBehaviour
 	DateTime time, timeDark, timeclear;
 	int timeBase = 11 * 60 + 59;
 	int style = 0;
+	Camera camera;
 	// Use this for initialization
 	void Awake ()
 	{
 		clear = new Color(255f/255, 255f/255, 255f/255);
 		dark = new Color(51f/255, 53f/255, 51f/255);
 		time = DateTime.Now;
+
+		camera = GetComponent<Camera> ();
 
 		style = PlayerPrefs.GetInt("SettingTheme", 0);
 

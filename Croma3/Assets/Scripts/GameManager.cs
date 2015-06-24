@@ -132,12 +132,9 @@ public class GameManager : MonoBehaviour
 			}
 		}
 
-		if(pauseButton.IsClicked())
+		if(pauseButton.IsClicked() && !pause)
 		{
-
-			pause = true;
-			timeScale = Time.timeScale;
-			Time.timeScale = 0;
+			Pause();
 		}
 
 		input.enabled = life > 0 ? !pause : false;

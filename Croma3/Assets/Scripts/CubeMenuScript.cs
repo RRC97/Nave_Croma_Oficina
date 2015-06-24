@@ -86,7 +86,7 @@ public class CubeMenuScript : MonoBehaviour
 		{
 			Transform box = cube.GetChild(i);
 			box.gameObject.AddComponent<Rigidbody>();
-			box.rigidbody.AddExplosionForce(Random.Range(0, 5000), cube.position, 1000);
+			box.GetComponent<Rigidbody> ().AddExplosionForce(Random.Range(0, 5000), cube.position, 1000);
 		}
 		enabled = false;
 	}

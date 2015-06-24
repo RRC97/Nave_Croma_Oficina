@@ -1,6 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager.cs">
+    <Files>
+      <File FileName="Assets\Scripts\BarScript.cs" Line="110" Column="4" />
+      <File FileName="Assets\Scripts\CubeScript.cs" Line="152" Column="103" />
+      <File FileName="Assets\Scripts\CubeEffect.cs" Line="11" Column="40" />
+      <File FileName="Assets\Scripts\CubeMenuScript.cs" Line="89" Column="32" />
+      <File FileName="Assets\Scripts\MusicScript.cs" Line="16" Column="3" />
+      <File FileName="Assets\Scripts\PowerUp.cs" Line="12" Column="40" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="38" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -67,7 +67,7 @@ public class BarScript : MonoBehaviour
 		return colorResult;
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		if(effect)
 		{
@@ -94,7 +94,8 @@ public class BarScript : MonoBehaviour
 
 	void OnTriggerEnter(Collider c)
 	{
-		if(c.gameObject.renderer.material.mainTexture.name.Equals(spriteName))
+		Renderer rendererCollider = c.gameObject.GetComponent<Renderer> ();
+		if(rendererCollider.material.mainTexture.name.Equals(spriteName))
 		{
 			Collided(c);
 		}
@@ -104,7 +105,8 @@ public class BarScript : MonoBehaviour
 
 	void OnTriggerStay(Collider c)
 	{
-		if(c.gameObject.renderer.material.mainTexture.name.Equals(spriteName))
+		Renderer rendererCollider = c.gameObject.GetComponent<Renderer> ();
+		if(rendererCollider.material.mainTexture.name.Equals(spriteName))
 		{
 			Collided(c);
 		}
