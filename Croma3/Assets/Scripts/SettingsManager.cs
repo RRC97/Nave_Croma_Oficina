@@ -19,10 +19,14 @@ public class SettingsManager : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			Application.LoadLevel("Menu");
-			PlayerPrefs.SetInt("SettingTheme", cubeTheme.Value);
-			PlayerPrefs.SetInt("SettingSound", cubeSound.Value);
-			PlayerPrefs.SetInt("SettingTutorial", cubeTutorial.Value);
-			PlayerPrefs.SetInt("SettingMusic", cubeMusic.Value);
 		}
+	}
+
+	void OnDestroy ()
+	{
+		PlayerPrefs.SetInt("SettingTheme", cubeTheme.Value);
+		PlayerPrefs.SetInt("SettingSound", cubeSound.Value);
+		PlayerPrefs.SetInt("SettingTutorial", cubeTutorial.Value);
+		PlayerPrefs.SetInt("SettingMusic", cubeMusic.Value);
 	}
 }

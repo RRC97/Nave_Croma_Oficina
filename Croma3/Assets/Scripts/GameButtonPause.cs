@@ -12,7 +12,7 @@ public class GameButtonPause : MonoBehaviour
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = BackgroundColor.invertColorText;
+        spriteRenderer.color = BackgroundColor.colorText;
     }
 
     void OnMouseDown()

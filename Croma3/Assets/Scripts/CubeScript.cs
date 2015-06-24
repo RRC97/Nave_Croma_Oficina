@@ -8,17 +8,17 @@ public class CubeScript : MonoBehaviour
 	[SerializeField]
 	float downSpeed = 5;
 
-	AudioSource audio;
-	Renderer renderer;
-	Rigidbody rigidbody;
+	protected AudioSource audio;
+	protected Renderer renderer;
+	protected Rigidbody rigidbody;
 
 	protected int colorId;
 	// Use this for initialization
 	void Awake ()
 	{
-		audio = GetComponent<AudioSource> ();
-		renderer = GetComponent<Renderer> ();
-		rigidbody = GetComponent<Rigidbody> ();
+		audio = gameObject.GetComponent<AudioSource> ();
+		renderer = gameObject.GetComponent<Renderer> ();
+		rigidbody = gameObject.GetComponent<Rigidbody> ();
 
 		int rSX = Random.Range (1, 4);
 		int rSY = Random.Range (1, 4);
@@ -32,6 +32,7 @@ public class CubeScript : MonoBehaviour
 	}
 	protected void Start()
 	{
+
 		audio.clip = (AudioClip)Resources.Load("Sound/" + renderer.material.mainTexture.name + "_fall");
 
 		int index = PlayerPrefs.GetInt("SettingSound", 0);
@@ -83,7 +84,7 @@ public class CubeScript : MonoBehaviour
 
 	public void SetColor(int color)
 	{
-		int colorChange = -1;
+		int colorChange = 0;
 		if(color >= 4)colorChange = Random.Range(3, 6);
 		else colorChange = color - 1;
 		string textureName = "white";
@@ -108,6 +109,9 @@ public class CubeScript : MonoBehaviour
 		case 5:
 			textureName = "magenta";
 			break;
+		default:
+			textureName = "yellow";
+				break;
 		}
 
 		colorId = colorChange;
