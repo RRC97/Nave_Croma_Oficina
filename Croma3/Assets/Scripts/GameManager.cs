@@ -24,10 +24,13 @@ public class GameManager : MonoBehaviour
 	Sprite textureON, textureOFF;
 
 	[SerializeField]
-	GameObject paused;
+	PausedScript paused;
 
 	[SerializeField]
 	InputManager input;
+
+	[SerializeField]
+	GoverManager gover;
 
 	bool pause;
 	float timeInstance, timeScale;
@@ -142,16 +145,12 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
+		paused.Travelling();
         if (!pause)
         {
             pause = true;
             timeScale = Time.timeScale;
             Time.timeScale = 0;
-        }
-        else
-        {
-            pause = false;
-            Time.timeScale = timeScale;
         }
     }
 
@@ -195,9 +194,15 @@ public class GameManager : MonoBehaviour
 	void Update ()
 	{
 		totalScore.color = BackgroundColor.colorText;
-		
+
+		if(!paused.IsOn())
+		{
+			pause = false;
+			Time.timeScale = timeScale;
+		}
+
 		InputGame();
-		paused.SetActive(pause);
+		paused.gameObject.SetActive (pause);
 
 		if(!pause)
 		{
@@ -223,6 +228,12 @@ public class GameManager : MonoBehaviour
 		{
 			timeScale = Time.timeScale;
 			Time.timeScale = 0;
+			gover.gameObject.SetActive(true);
+
+			int best = PlayerPrefs.GetInt("Best");
+			PlayerPrefs.SetInt("Score", countPoints);
+			if(best < countPoints)
+				PlayerPrefs.SetInt("Best", countPoints);
 		}
 
 		totalScore.text = countPoints.ToString();

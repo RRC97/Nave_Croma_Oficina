@@ -1,17 +1,9 @@
 Base path: C:/Program Files (x86)/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-1-3888
+Pipe name: \\.\pipe\UnityShaderCompiler-1-3712
 Cmd: getPlatforms
 Cmd: preprocess
   insize=875 outsize=1384 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2473 outsize=2875 kw=POINT ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2473 outsize=2013 kw=POINT ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2001 outsize=1477 kw= ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2001 outsize=632 kw= ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=4186 outsize=2883 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=4186 outsize=1680 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+Unhandled exception: Readfile from pipe failed. GLE=O pipe foi finalizado.
+
+
+Quitting shader compiler process
