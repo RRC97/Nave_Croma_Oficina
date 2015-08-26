@@ -7,13 +7,6 @@ public class GameButtonPause : MonoBehaviour
     GameManager manager;
     [SerializeField]
     private string nameScene;
-    private SpriteRenderer spriteRenderer;
-
-    void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = BackgroundColor.colorText;
-    }
 
     void OnMouseDown()
     {

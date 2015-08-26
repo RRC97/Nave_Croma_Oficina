@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 	BarScript bar;
 
 	[SerializeField]
-	Text totalScore;
+	Text totalScore, streak;
 
 	[SerializeField]
 	InputButton pauseButton;
@@ -34,19 +34,8 @@ public class GameManager : MonoBehaviour
 
 	bool pause;
 	float timeInstance, timeScale;
-	int countPoints, countHits, life,
+	int countPoints, countHits, life = 3,
 	countInstance, minColor = 1, multi = 1;
-
-	void Start()
-	{
-		SpriteRenderer rendererPauseButton = 
-			pauseButton.GetComponent<SpriteRenderer>();
-
-		rendererPauseButton.color = 
-			totalScore.color = 
-				BackgroundColor.colorText;
-		life = lifeIcons.Length;
-	}
 
 	public void SetDouble(bool active)
 	{
@@ -152,6 +141,11 @@ public class GameManager : MonoBehaviour
             timeScale = Time.timeScale;
             Time.timeScale = 0;
         }
+		else
+		{
+			pause = false;
+			Time.timeScale = timeScale;
+		}
     }
 
 	void PointManager()
@@ -161,7 +155,7 @@ public class GameManager : MonoBehaviour
 		if(valueHit > 0)
 		{
 			int total = 0;
-			for(int i = 0; i < valueHit; i++)
+			for(int i = 0; i < valueHit - 1; i++)
 			{
 				countHits++;
 				
@@ -193,16 +187,7 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		totalScore.color = BackgroundColor.colorText;
-
-		if(!paused.IsOn())
-		{
-			pause = false;
-			Time.timeScale = timeScale;
-		}
-
 		InputGame();
-		paused.gameObject.SetActive (pause);
 
 		if(!pause)
 		{
@@ -237,6 +222,6 @@ public class GameManager : MonoBehaviour
 		}
 
 		totalScore.text = countPoints.ToString();
-		//streak.text = countHits.ToString();
+		streak.text = countHits.ToString();
 	}
 }

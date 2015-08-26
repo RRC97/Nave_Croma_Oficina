@@ -4,9 +4,6 @@ using System.Collections;
 public class MenuPlayButton : MonoBehaviour
 {
 	[SerializeField]
-	CubeMenuScript cube;
-
-	[SerializeField]
 	MenuBar bar;
 
 	[SerializeField]
@@ -14,13 +11,6 @@ public class MenuPlayButton : MonoBehaviour
 
 	bool active;
 	float timeDisplay;
-	private SpriteRenderer spriteRenderer;
-	// Use this for initialization
-	void Awake ()
-	{
-		spriteRenderer = GetComponent<SpriteRenderer>();
-		spriteRenderer.color = BackgroundColor.colorText;
-	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -38,11 +28,9 @@ public class MenuPlayButton : MonoBehaviour
 	{
 		if(this.enabled)
 		{
-			cube.Explosion();
 			title.TravilingOff();
 			bar.TravilingOff();
 			active = true;
-			spriteRenderer.color = BackgroundColor.invertColorText;
 		}
 	}
 }
