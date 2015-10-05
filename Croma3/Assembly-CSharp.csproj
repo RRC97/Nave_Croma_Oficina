@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FadeFunction.cs" />
      <Compile Include="Assets\Scripts\BackgroundColor.cs" />
      <Compile Include="Assets\Scripts\BarScript.cs" />
      <Compile Include="Assets\Scripts\BreakStreak.cs" />
@@ -72,8 +73,11 @@
      <Compile Include="Assets\Scripts\PowerUp.cs" />
      <Compile Include="Assets\Scripts\PowerUpEvent.cs" />
      <Compile Include="Assets\Scripts\SettingsManager.cs" />
+     <Compile Include="Assets\Scripts\SpectrumScript.cs" />
      <Compile Include="Assets\Scripts\SpriteColor.cs" />
      <Compile Include="Assets\Scripts\TextColor.cs" />
+     <Compile Include="Assets\Scripts\UnityToastExample.cs" />
+     <Compile Include="Assets\ShowEducation.cs" />
      <None Include="Assets\Resources\Shader\Cube.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

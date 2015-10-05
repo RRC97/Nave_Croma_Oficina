@@ -5,13 +5,18 @@ public class MenuButton : MonoBehaviour
 {
 	[SerializeField]
 	private string nameScene;
+
+	[SerializeField]
+	private FadeFunction fade;
 	
 	void OnMouseDown ()
 	{
 		if(this.enabled)
 		{
 			if(nameScene != "")
-				Application.LoadLevel(nameScene);
+			{
+				fade.OnFadeLoadLevel(nameScene);
+			}
 		}
 	}
 }

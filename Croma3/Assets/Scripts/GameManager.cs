@@ -89,21 +89,21 @@ public class GameManager : MonoBehaviour
 			countInstance++;
 			GameObject instance = (GameObject)Instantiate(cubeBase);
 			
-			if(countInstance % 5 == 0 && Random.Range(0, 3) != 0)
-			{
-				instance.AddComponent<BreakStreak>();
-				instance.GetComponent<BreakStreak>().SetColor(Random.Range(minColor, 5));
-			}
-			else if(countInstance % 7 == 0 && Random.Range(0, 2) != 0)
-			{
-				instance.AddComponent<PowerUp>();
-				instance.GetComponent<PowerUp>().SetColor(Random.Range(minColor, 5));
-			}
-			else
-			{
+			//if(countInstance % 5 == 0 && Random.Range(0, 3) != 0)
+			//{
+			//	instance.AddComponent<BreakStreak>();
+			//	instance.GetComponent<BreakStreak>().SetColor(Random.Range(minColor, 5));
+			//}
+			//else if(countInstance % 7 == 0 && Random.Range(0, 2) != 0)
+			//{
+			//	instance.AddComponent<PowerUp>();
+			//	instance.GetComponent<PowerUp>().SetColor(Random.Range(minColor, 5));
+			//}
+			//else
+			//{
 				instance.AddComponent<CubeScript>();
 				instance.GetComponent<CubeScript>().SetColor(Random.Range(minColor, 5));
-			}
+			//}
 			
 			instance.transform.parent = this.transform;
 			timeInstance = 0;
@@ -134,17 +134,21 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-		paused.Travelling();
-        if (!pause)
-        {
-            pause = true;
-            timeScale = Time.timeScale;
-            Time.timeScale = 0;
-        }
-		else
+		if(!gover.gameObject.activeSelf)
 		{
-			pause = false;
-			Time.timeScale = timeScale;
+	        if (!pause)
+	        {
+				paused.Travelling();
+	            pause = true;
+	            timeScale = Time.timeScale;
+	            Time.timeScale = 0;
+	        }
+			else
+			{
+				paused.Travelling();
+				pause = false;
+				Time.timeScale = timeScale;
+			}
 		}
     }
 
@@ -209,7 +213,7 @@ public class GameManager : MonoBehaviour
 			}
 		}
 
-		if(life <= 0)
+		if(life <= 0 && !gover.gameObject.activeSelf)
 		{
 			timeScale = Time.timeScale;
 			Time.timeScale = 0;

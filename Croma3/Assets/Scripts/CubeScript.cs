@@ -146,25 +146,29 @@ public class CubeScript : MonoBehaviour
 		velocity.y = -downSpeed;
 		rigidbody.velocity = velocity;
 	}
-
+	private bool destroyed;
 	public void OnDestroySound ()
 	{
-		string colorName = renderer.material.mainTexture.name;
-		GameObject soundDestroy = (GameObject)Instantiate(Resources.Load("Prefab/CubeEffect"));
-		soundDestroy.name = colorName + "_SOUND_DESTROY";
-		soundDestroy.transform.position = transform.position;
-		soundDestroy.GetComponent<ParticleSystem> ().GetComponent<Renderer> ().material = renderer.material;
-		AudioSource audioDestroy = soundDestroy.AddComponent<AudioSource>();
+		if(!destroyed)
+		{
+			string colorName = renderer.material.mainTexture.name;
+			GameObject soundDestroy = (GameObject)Instantiate(Resources.Load("Prefab/CubeEffect"));
+			soundDestroy.name = colorName + "_SOUND_DESTROY";
+			soundDestroy.transform.position = transform.position;
+			soundDestroy.GetComponent<ParticleSystem> ().GetComponent<Renderer> ().material = renderer.material;
+			AudioSource audioDestroy = soundDestroy.AddComponent<AudioSource>();
 
-		audioDestroy.clip = (AudioClip)Resources.Load("Sound/" + renderer.material.mainTexture.name + "_destroy");
-		
-		int index = PlayerPrefs.GetInt("SettingSound", 0);
-		float volume = 1 - 0.35f * index;
-		
-		if(volume < 0)
-			volume = 0;
-		
-		audioDestroy.volume = volume;
-		audioDestroy.Play();
+			audioDestroy.clip = (AudioClip)Resources.Load("Sound/" + renderer.material.mainTexture.name + "_destroy");
+			
+			int index = PlayerPrefs.GetInt("SettingSound", 0);
+			float volume = 1 - 0.35f * index;
+			
+			if(volume < 0)
+				volume = 0;
+			
+			audioDestroy.volume = volume;
+			audioDestroy.Play();
+			destroyed = true;
+		}
 	}
 }

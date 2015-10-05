@@ -8,16 +8,19 @@ public class GameButtonPause : MonoBehaviour
     [SerializeField]
     private string nameScene;
 
-    void OnMouseDown()
-    {
-        if (this.enabled)
-        {
-            if (nameScene != "")
-                Application.LoadLevel(nameScene);
-            else
-            {
-                manager.Pause();
-            }
-        }
-    }
+	[SerializeField]
+	private FadeFunction fade;
+	
+	void OnMouseDown ()
+	{
+		if(this.enabled)
+		{
+			if(nameScene != "")
+			{
+				fade.OnFadeLoadLevel(nameScene);
+			}
+		}
+		Time.timeScale = 1;
+		manager.Pause();
+	}
 }
